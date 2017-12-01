@@ -22,7 +22,7 @@ Jessy,Red,Palmtreeroad 9,Miami
 The folllwing code fragment initializes the needed components.
 
 ```javascript
-const {LineReader,CsvRecordReader} = require('bigcsv');
+const { CsvRecordReader, LineReader } = require('bigcsv');
 
 // Create a record reader, configured with a template.
 const recordReader = new CsvRecordReader({

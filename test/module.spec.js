@@ -8,7 +8,7 @@ describe('module', function () {
   describe('export', function () {
     it('should return 2 functions', function () {
       expect(LineReader).to.be.a('Function');
-      expect(CsvRecordReader).to.be.a('Function')
+      expect(CsvRecordReader).to.be.a('Function');
     });
   });
 
