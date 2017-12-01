@@ -7,22 +7,21 @@ Little library to parse CSV files. It was created to be able to parse large CSV 
 * LineReader: A component to read the lines of a file. It uses an internal buffer to store lines untill they are ready to be processed. Reading the file is paused untill the buffer is empty.
 * CsvRecordReader: Component to parse a single line of a CSV. It will create objects based on a template.
 
-The 2 components can be used independantly.
+The 2 components can be used independently.
 
 ## Usage
 
 Imagine a CSV constructed as follows.
 
-<pre>
-<code class="csv">
+```csv
 John,Silver,Avenue du prince 24,Paris
 Silvia,Janssens,Gemeentehuisstraat 5,Evere
 Jessy,Red,Palmtreeroad 9,Miami
-</code>
-</pre>
+```
 
-<pre>
-<code class="javascript">
+The folllwing code fragment initializes the needed components.
+
+```javascript
 const {LineReader,CsvRecordReader} = require('bigcsv');
 
 // Create a record reader, configured with a template.
@@ -45,5 +44,4 @@ lr.read(theFile, (lr) => {
     // ... do something with the object
   }
 });
-</code>
-</pre>
+```
