@@ -29,10 +29,10 @@ const recordReader = new CsvRecordReader({
   delimiter: ',',
   cleanToNull: true,
   template: [
-    { name: "name" },							// the first column will be stored in an attribute named "name"
+    "name",								// the first column will be stored in an attribute named "name"
     null,								// the second column will be ignored
     { name: "street", trans: (val) => { return val.toUpperCase(); } },	// the fourth column will be stored in an attribute named street and its value transformed to uppercase
-    { name: "city" }
+    "city"
   ]
 });
 
@@ -40,7 +40,8 @@ let lr = new LineReader();
 // this starts reading the file and filling the buffer
 lr.read(theFile, (lr) => {
   while (lr.available()) {
-    var recordObject = recordReader.read(lr.pop());
+    var line = lr.pop();
+    var recordObject = recordReader.readLine(l.l); // l property contains the actual content of the line
     // ... do something with the object
   }
 });
