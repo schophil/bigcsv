@@ -41,7 +41,7 @@ let lr = new LineReader();
 lr.read(theFile, (lr) => {
   while (lr.available()) {
     var line = lr.pop();
-    var recordObject = recordReader.readLine(l.l); // l property contains the actual content of the line
+    var recordObject = recordReader.readLine(line.l); // l property contains the actual content of the line
     // ... do something with the object
   }
 });
