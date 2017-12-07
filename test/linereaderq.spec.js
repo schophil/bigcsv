@@ -21,7 +21,6 @@ describe('LineReader', function () {
 
   describe('lineReader', function () {
     let lr = new LineReader({
-      separator: '\n'
     });
 
     it('should return null when popping before reading', function () {
@@ -43,6 +42,35 @@ describe('LineReader', function () {
       });
     });
 
+    it('should detect the line break charachter', function (done) {
+      let total = 0;
+      let firstLine = null;
+      let secondLine = null;
+      let lineBreak = null;
+      lr.read('./test/win.txt', (lr) => {
+        if (total == 0) {
+          firstLine = lr.pop().l;
+          total++;
+        }
+        if (total == 1) {
+          secondLine = lr.pop().l;
+          total++;
+          lineBreak = lr.lineBreak;
+        }
+        while (lr.available()) {
+          lr.pop();
+          total++;
+        }
+        if (total == 4) {
+          test(done, () => {
+            expect(firstLine).to.equal('FIRSTLINE');
+            expect(secondLine).to.equal('SECONDLINE');
+            expect(lineBreak).to.equal('\r\n');
+          });
+        }
+      });
+    });
+
     it('shoud read the full file at some point', function (done) {
       let total = 0;
       let lastLine = null;
@@ -61,6 +89,7 @@ describe('LineReader', function () {
         }
       });
     });
+
   });
 
 });
